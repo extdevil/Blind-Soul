@@ -1,0 +1,11 @@
+D:\Projects\CSharp\Farlight 84 Bypass\Blind Soul\bin\Debug\Blind Soul.exe.config
+D:\Projects\CSharp\Farlight 84 Bypass\Blind Soul\bin\Debug\Blind Soul.exe
+D:\Projects\CSharp\Farlight 84 Bypass\Blind Soul\bin\Debug\Blind Soul.pdb
+D:\Projects\CSharp\Farlight 84 Bypass\Blind Soul\obj\Debug\Blind Soul.csproj.AssemblyReference.cache
+D:\Projects\CSharp\Farlight 84 Bypass\Blind Soul\obj\Debug\Blind Soul.csproj.SuggestedBindingRedirects.cache
+D:\Projects\CSharp\Farlight 84 Bypass\Blind Soul\obj\Debug\Blind_Soul.MainUI.resources
+D:\Projects\CSharp\Farlight 84 Bypass\Blind Soul\obj\Debug\Blind_Soul.Properties.Resources.resources
+D:\Projects\CSharp\Farlight 84 Bypass\Blind Soul\obj\Debug\Blind Soul.csproj.GenerateResource.cache
+D:\Projects\CSharp\Farlight 84 Bypass\Blind Soul\obj\Debug\Blind Soul.csproj.CoreCompileInputs.cache
+D:\Projects\CSharp\Farlight 84 Bypass\Blind Soul\obj\Debug\Blind Soul.exe
+D:\Projects\CSharp\Farlight 84 Bypass\Blind Soul\obj\Debug\Blind Soul.pdb
