@@ -232,7 +232,7 @@ namespace Blind_Soul
             _anticheatStatus.Text = "Bypassed";
 
             File.WriteAllBytes("hack1.dll", Properties.Resources.F84_V5);
-            File.WriteAllBytes("hack2.dll", Properties.Resources.FARLIGHT);
+            File.WriteAllBytes("hack2.dll", Properties.Resources.xFL84);
             File.WriteAllBytes("Inject.exe", Properties.Resources.Inject_x64);
 
             MessageBox.Show("Anti-cheat bypassed successfully !\n\nPress 'OK' to Inject hack...", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);

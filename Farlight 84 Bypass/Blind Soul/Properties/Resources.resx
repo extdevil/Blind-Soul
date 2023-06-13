@@ -130,10 +130,10 @@
   <data name="F84_V5" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\F84_V5.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="FARLIGHT" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FARLIGHT.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="Inject_x64" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Inject-x64.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="xFL84" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\xFL84.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

@@ -94,15 +94,11 @@
     <None Include="Resources\hack2.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\F84_V5.dll" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\FARLIGHT.dll" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Inject-x64.exe" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\F84_V5.dll" />
+    <None Include="Resources\xFL84.dll" />
     <Content Include="_devil__futuristic_gamer_neon_devil_a725eaba_f3ee_4ddc_af30_3a1d4c78bb22_IqS_2.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
