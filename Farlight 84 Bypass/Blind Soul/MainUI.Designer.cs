@@ -55,6 +55,9 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.closeBtn = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
+            this.autoInject = new System.Windows.Forms.CheckBox();
+            this.injectDelay = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // _formMover
@@ -100,7 +103,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(468, 22);
             this.label2.TabIndex = 4;
-            this.label2.Text = "~ by Devil (v1.0)";
+            this.label2.Text = "~ by Devil (v1.3)";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
@@ -275,8 +278,6 @@
             // hack1
             // 
             this.hack1.AutoSize = true;
-            this.hack1.Checked = true;
-            this.hack1.CheckState = System.Windows.Forms.CheckState.Checked;
             this.hack1.Font = new System.Drawing.Font("Century Gothic", 10F);
             this.hack1.ForeColor = System.Drawing.Color.DodgerBlue;
             this.hack1.Location = new System.Drawing.Point(54, 447);
@@ -318,7 +319,7 @@
             this.startHackBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.startHackBtn.Font = new System.Drawing.Font("Century Gothic", 10F);
             this.startHackBtn.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.startHackBtn.Location = new System.Drawing.Point(414, 239);
+            this.startHackBtn.Location = new System.Drawing.Point(417, 253);
             this.startHackBtn.Name = "startHackBtn";
             this.startHackBtn.Size = new System.Drawing.Size(151, 31);
             this.startHackBtn.TabIndex = 24;
@@ -335,6 +336,7 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(239, 186);
             this.panel3.TabIndex = 22;
+            this.panel3.Click += new System.EventHandler(this.panel3_Click);
             // 
             // panel2
             // 
@@ -345,6 +347,7 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(240, 186);
             this.panel2.TabIndex = 20;
+            this.panel2.Click += new System.EventHandler(this.panel2_Click);
             // 
             // closeBtn
             // 
@@ -371,12 +374,59 @@
             this.label8.Text = "(C) Copyrights 2023 The Devil. All rights reserved.";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // autoInject
+            // 
+            this.autoInject.AutoSize = true;
+            this.autoInject.BackColor = System.Drawing.Color.Transparent;
+            this.autoInject.Font = new System.Drawing.Font("Century Gothic", 10F);
+            this.autoInject.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.autoInject.Location = new System.Drawing.Point(395, 210);
+            this.autoInject.Name = "autoInject";
+            this.autoInject.Size = new System.Drawing.Size(102, 23);
+            this.autoInject.TabIndex = 26;
+            this.autoInject.Text = "Auto Inject";
+            this.autoInject.UseVisualStyleBackColor = false;
+            this.autoInject.CheckedChanged += new System.EventHandler(this.autoInject_CheckedChanged);
+            // 
+            // injectDelay
+            // 
+            this.injectDelay.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.injectDelay.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.injectDelay.Enabled = false;
+            this.injectDelay.Font = new System.Drawing.Font("Century Gothic", 10F);
+            this.injectDelay.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.injectDelay.Location = new System.Drawing.Point(506, 214);
+            this.injectDelay.Name = "injectDelay";
+            this.injectDelay.Size = new System.Drawing.Size(46, 17);
+            this.injectDelay.TabIndex = 27;
+            this.injectDelay.Text = "20";
+            this.injectDelay.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.injectDelay.TextChanged += new System.EventHandler(this.injectDelay_TextChanged);
+            this.injectDelay.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.injectDelay_KeyPress);
+            // 
+            // label10
+            // 
+            this.label10.AutoEllipsis = true;
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.Transparent;
+            this.label10.Font = new System.Drawing.Font("Century Gothic", 10F);
+            this.label10.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.label10.Location = new System.Drawing.Point(558, 212);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(32, 19);
+            this.label10.TabIndex = 28;
+            this.label10.Text = "sec";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // MainUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.ClientSize = new System.Drawing.Size(668, 612);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.injectDelay);
+            this.Controls.Add(this.autoInject);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.startHackBtn);
             this.Controls.Add(this.label5);
@@ -440,6 +490,9 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button startHackBtn;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.CheckBox autoInject;
+        private System.Windows.Forms.TextBox injectDelay;
+        private System.Windows.Forms.Label label10;
     }
 }
 

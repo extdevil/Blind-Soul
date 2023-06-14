@@ -107,17 +107,10 @@ namespace Blind_Soul
         private void autoChecker_Tick(object sender, EventArgs e)
         {
             //Cloudflare
-            if (Process.GetProcessesByName("Cloudflare WARP").Length != 0)
+            string[] dnsServers = GetConnectedDNS();
+            if (dnsServers != null && dnsServers.Length > 1)
             {
-                string[] dnsServers = GetConnectedDNS();
-                if (dnsServers != null && dnsServers.Length > 1)
-                {
-                    _cloudflareStatus.Text = "Connected";
-                }
-                else
-                {
-                    _cloudflareStatus.Text = "Not Connected";
-                }
+                _cloudflareStatus.Text = "Connected";
             }
             else
             {
@@ -156,7 +149,7 @@ namespace Blind_Soul
                 if (File.Exists(fbd.SelectedPath + @"\EasyAntiCheat\Settings.json"))
                 {
                     _gamePath.Text = fbd.SelectedPath + @"\EasyAntiCheat\Settings.json";
-                    File.WriteAllText("LastPath.txt", fbd.SelectedPath + @"\EasyAntiCheat\Settings.json");
+                    File.WriteAllText("LastPath.cfg", fbd.SelectedPath + @"\EasyAntiCheat\Settings.json");
                 }
                 else
                 {
@@ -169,7 +162,20 @@ namespace Blind_Soul
         {
             if (hack2.Checked)
             {
-                hack1.Checked = false;
+                panel3.BorderStyle = BorderStyle.FixedSingle;
+                File.WriteAllText("Hack2Config.cfg", "Enabled");
+            }
+            else
+            {
+                panel3.BorderStyle = BorderStyle.None;
+                try
+                {
+                    File.Delete("Hack2Config.cfg");
+                }
+                catch(Exception)
+                {
+
+                }
             }
         }
 
@@ -177,7 +183,20 @@ namespace Blind_Soul
         {
             if (hack1.Checked)
             {
-                hack2.Checked = false;
+                panel2.BorderStyle = BorderStyle.FixedSingle;
+                File.WriteAllText("Hack1Config.cfg", "Enabled");
+            }
+            else
+            {
+                panel2.BorderStyle = BorderStyle.None;
+                try
+                {
+                    File.Delete("Hack1Config.cfg");
+                }
+                catch (Exception)
+                {
+
+                }
             }
         }
 
@@ -198,6 +217,12 @@ namespace Blind_Soul
             if (Process.GetProcessesByName("SolarlandClient-Win64-Shipping").Length != 0)
             {
                 MessageBox.Show("Close the game to start the hack !", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (!hack1.Checked && !hack2.Checked)
+            {
+                MessageBox.Show("Must select any one hack to inject from the given menu(s) !", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -235,23 +260,42 @@ namespace Blind_Soul
             File.WriteAllBytes("hack2.dll", Properties.Resources.xFL84);
             File.WriteAllBytes("Inject.exe", Properties.Resources.Inject_x64);
 
-            MessageBox.Show("Anti-cheat bypassed successfully !\n\nPress 'OK' to Inject hack...", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (autoInject.Checked)
+            {
+                try
+                {
+                    Thread.Sleep(Convert.ToInt32(injectDelay.Text) * 1000);
+                }
+                catch(Exception)
+                {
 
+                }
+               
+            }
+            else
+            {
+                MessageBox.Show("Anti-cheat bypassed successfully !\n\nPress 'OK' to Inject hack...", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            
             //Injecting dll
             Process pr = new Process();
             pr.StartInfo.FileName = "Inject.exe";
             if (hack1.Checked)
             {
                 pr.StartInfo.Arguments = "hack1.dll SolarlandClient-Win64-Shipping.exe";
+                pr.StartInfo.CreateNoWindow = true;
+                pr.StartInfo.UseShellExecute = false;
+                pr.Start();
+                pr.WaitForExit();
             }
-            else if (hack2.Checked)
+            if (hack2.Checked)
             {
                 pr.StartInfo.Arguments = "hack2.dll SolarlandClient-Win64-Shipping.exe";
+                pr.StartInfo.CreateNoWindow = true;
+                pr.StartInfo.UseShellExecute = false;
+                pr.Start();
+                pr.WaitForExit();
             }
-            pr.StartInfo.CreateNoWindow = true;
-            pr.StartInfo.UseShellExecute = false;
-            pr.Start();
-            pr.WaitForExit();
             _dllStatus.Text = "Injected";
             
 
@@ -264,9 +308,95 @@ namespace Blind_Soul
 
         private void MainUI_Load(object sender, EventArgs e)
         {
-            if (File.Exists("LastPath.txt"))
+            if (File.Exists("LastPath.cfg"))
             {
-                _gamePath.Text = File.ReadAllText("LastPath.txt");
+                _gamePath.Text = File.ReadAllText("LastPath.cfg");
+            }
+
+            if (File.Exists("Hack1Config.cfg"))
+            {
+                hack1.Checked = true;
+            }
+            else
+            {
+                hack1.Checked= false;
+            }
+
+            if (File.Exists("Hack2Config.cfg"))
+            {
+                hack2.Checked = true;
+            }
+            else
+            {
+                hack2.Checked = false;
+            }
+
+            if (File.Exists("AutoInject.cfg"))
+            {
+                autoInject.Checked = true;
+                injectDelay.Text = File.ReadAllText("AutoInject.cfg");
+            }
+            else
+            {
+                autoInject.Checked = false;
+            }
+        }
+
+        private void panel2_Click(object sender, EventArgs e)
+        {
+            if (hack1.Checked)
+            {
+                hack1.Checked = false;
+            }
+            else
+            {
+                hack1.Checked = true;
+            }
+        }
+
+        private void panel3_Click(object sender, EventArgs e)
+        {
+            if (hack2.Checked)
+            {
+                hack2.Checked = false;
+            }
+            else
+            {
+                hack2.Checked = true;
+            }
+        }
+
+        private void autoInject_CheckedChanged(object sender, EventArgs e)
+        {
+            if (autoInject.Checked)
+            {
+                File.WriteAllText("AutoInject.cfg", injectDelay.Text);
+                injectDelay.Enabled = true;
+            }
+            else
+            {
+                injectDelay.Enabled = false;
+                try
+                {
+                    File.Delete("AutoInject.cfg");
+                }
+                catch(Exception)
+                {
+
+                }
+            }
+        }
+
+        private void injectDelay_TextChanged(object sender, EventArgs e)
+        {
+            File.WriteAllText("AutoInject.cfg", injectDelay.Text);
+        }
+
+        private void injectDelay_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
             }
         }
     }
